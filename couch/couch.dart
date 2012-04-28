@@ -1,4 +1,5 @@
 #import('dart:html');
+#import('dart:json');
 
 class couch {
 
@@ -7,10 +8,6 @@ class couch {
 
   void run() {
  
-    
-    //http://dl.dropbox.com/u/825637/dart-hackathon/json1.txt
-    
-    
     
     getLanguageData(String languageName, onSuccess(XMLHttpRequest req)) {
       var url = "http://localhost:5555/"; 
@@ -22,6 +19,26 @@ class couch {
     // print the raw json response text from the server
     onSuccess(XMLHttpRequest req) {
        write(req.responseText); // print the received raw JSON text
+       
+       
+       
+      Map json = JSON.parse(req.responseText);
+      
+     // json["rows"];
+      
+      /*
+      
+      json["rows"].forEach(
+      
+        (k,v) {
+          print('$k : $v');
+          
+          
+        }
+      );*/
+      
+      json["rows"].forEach((element) => print(element));
+      
     }
 
     getLanguageData("dart", onSuccess);
