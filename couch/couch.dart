@@ -16,14 +16,19 @@ class couch {
     var v = {
              "chart": {
                "renderTo": "container",
-               "type": "area"
+               "zoomType": "x",
+               "spacingRight": 20
+               
            },
+           "title": {
+             "text": "Events returned to user per time"
+         },
            "xAxis": {
                "labels": {}
            },
            "yAxis": {
                "title": {
-                   "text": "Nuclear weapon states"
+                   "text": "Events returnd"
                },
                "labels": {}
            },
@@ -84,7 +89,7 @@ class couch {
  
     
     getLanguageData(String languageName, onSuccess(XMLHttpRequest req)) {
-      var url = "http://localhost:5555/"; 
+      var url = "http://localhost:5555/joynme-feedback/_design/dart/_view/eventAgendaByTime?decending=true&stale=ok&endkey=1335299451846&skip=100"; 
       
       // call the web server asynchronously 
       var request = new XMLHttpRequest.getTEMPNAME(url, onSuccess);
