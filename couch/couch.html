@@ -3,11 +3,29 @@
 <html>
   <head>
     <title>couch</title>
+		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+		<script type="text/javascript">
+
+function receiveChartMessage(event)
+{
+//alert(event.data);
+  var parsedObject = jQuery.parseJSON( event.data );
+  var chart2;
+  chart2 = new Highcharts.Chart(parsedObject);
+}
+window.addEventListener("message", receiveChartMessage, false);
+
+		</script>
   </head>
   <body>
+  <script src="highcharts/js/highcharts.js"></script>
+	<script src="highcharts/js/modules/exporting.js"></script>
     <h1>couch</h1>
-    <h2 id="status">dart is not running</h2>
+    <h2 id="status"></h2>
     <script type="application/dart" src="couch.dart"></script>
     <script src="http://dart.googlecode.com/svn/branches/bleeding_edge/dart/client/dart.js"></script>
+
+	<div id="container" style="min-width: 400px; height: 400px; margin: 0 auto"></div>
+    
   </body>
 </html>
